@@ -93,8 +93,6 @@ func initConfig(args []string, fs perfTestUtils.FileSystem, exit func(code int))
 	configurationSettings = new(perfTestUtils.Config)
 	configurationSettings.SetDefaults()
 
-	log.Warnf("DEBUG 3: default config.skipMemCheck = %t", configurationSettings.SkipMemCheck )
-
 	//----- Get Hostname for this machine.
 	host, err := os.Hostname()
 	if err != nil {
@@ -143,12 +141,8 @@ func initConfig(args []string, fs perfTestUtils.FileSystem, exit func(code int))
 
 	setLogLevel(boolVerbose, boolDebug)
 
-	log.Warnf("DEBUG 1: config.skipMemCheck = %t", configurationSettings.SkipMemCheck )
-	log.Warnf("DEBUG 2: configOverrides.skipMemCheck = %t", configOverrides.SkipMemCheck )
-
 	// Override defaults with args.
 	overrideConfigOpts()
-	log.Warnf("DEBUG 3: config.skipMemCheck = %t", configurationSettings.SkipMemCheck )
 
 
 	//----- Parse the config file if specified.
@@ -174,12 +168,9 @@ func initConfig(args []string, fs perfTestUtils.FileSystem, exit func(code int))
 			}
 		}
 	}
-	log.Warnf("DEBUG 4: config.skipMemCheck = %t", configurationSettings.SkipMemCheck )
-	log.Warnf("DEBUG 5: configOverrides.skipMemCheck = %t", configOverrides.SkipMemCheck )
 
 	// If a config file was loaded, override with args.
 	overrideConfigOpts()
-	log.Warnf("DEBUG 6: config.skipMemCheck = %t", configurationSettings.SkipMemCheck )
 }
 
 //----- setLogLevel -----------------------------------------------------------
